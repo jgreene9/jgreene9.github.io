@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="lib/onsen/css/onsenui.css" />
+    <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css" />
+    <script src="lib/onsen/js/onsenui.js"></script>
+        
+</head>
+
+<body>
+    <ons-splitter>
+        <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
+            <ons-page>
+                <ons-list>
+                    <ons-list-item onclick="fn.load('home.html')" tappable> Home
+</ons-list-item>
+<ons-list-item onclick="fn.load('garage.html')" tappable> Garage Status
+</ons-list-item>
+
+</ons-list>
+
+</ons-page>
+</ons-splitter-side>
+<ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+</ons-splitter>
+<!-- Mark up for Home Page HTML-->
+<ons-template id="home.html">
+    <ons-page>
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.open()">
+<ons-icon icon="md-face"></ons-icon>
+</ons-toolbar-button>
+</div>
+<div class="center">
+    Bill's IOT Cloud Control
+</div>
+</ons-toolbar>
+<ons-list>
+    <img src="img/home.jpg"/>
+    <ons-list-item><ons-button onclick="fn.load('garage.html')">View Garage Door Status</ons-button></ons-list-item>
+    <ons-list-item><ons-button onclick="fn.load('garage.html')">View Temperature Monitoring</ons-button></ons-list-item>
+    <ons-list-item>Other Stuff in the future</ons-list-item>
+</ons-list>
+</ons-page>
+</ons-template>
+<!-- Mark up for Garage Control Page HTML-->
+<ons-template id="garage.html">
+    <ons-page> 
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.open()">
+<ons-icon icon="md-menu"></ons-icon>
+</ons-toolbar-button>
+</div>
+<div class="center">
+    Control Garage Page
+</div>
+</ons-toolbar>
+
+My Garage Door
+<p>
+<img id="GaragePic" src="img/GarageOpen.png" width="100" height="75" />
+<ons-button onclick="Open_GarageCommand()">Open</ons-button>
+<ons-button onclick="Close_GarageCommand()">Close</ons-button>
+
+      <div style="text-align: center; margin-top: 30px;">      
+    <p style="margin-top: 30px;">
+      <ons-button onclick="getM2Xvalues_Temperature()">Go To Cloud</ons-button>
+    </p>
+    <p>
+      <ons-input id="txb_Temperature" modifier="underbar" placeholder="Value" float></ons-input>
+    </p>
+  </div>
+
+  <div id="grid1" class="wrapper">
+    <div class="box item1">My Garage Door</div>
+    <div class="box item2"><img id="GaragePic" src="img/GarageOpen.png" width="120" height="100" /></div>
+    <div class="box item3">Status</div>
+    <div class="box item4"><input id="btn_door_open" type="button" value="Open" onclick="Open_GarageCommand();" /></div>
+    <div class="box item5"><input id="btn_door_close" type="button" value="Close" onclick="Close_GarageCommand();" /></div>
+</div>
+
+
+</ons-page>
+</ons-template>
+
+
+
+
+<script src = "app.js"></script>
+<script src = "GoCloud.js"></script>
+</body>
+
+</html>
